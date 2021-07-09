@@ -1,5 +1,5 @@
 gitProvider: Pipelinescantest
 artifactory: amithmutak
 artifactoryUrl: amithmutak.jfrog.io   # replace with your server name
-repoPath: sandeepani2206/pipelinerepo     # replace jfrog with your username or org name
-deployerRepo: san-libs-snapshot-local
+repoPath: sandeepani2206/testpipeline     # replace jfrog with your username or org name
+deployerRepo: maven-local
