@@ -3,3 +3,4 @@ artifactory: artifactory_int
 artifactoryUrl: muddanajv.jfrog.io   # replace with your server name
 repoPath: sandeepani2206/testpipeline     # replace jfrog with your username or org name
 deployerRepo: maven-local
+smtpIntegration: mail
