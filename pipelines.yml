@@ -34,6 +34,11 @@ pipelines:
             - name: mvn_build_step
           outputResources:
             - name: mvn_build_info
+          integrations:  
+            - name: {{ .Values.smtpIntegration }}       
+          execution:
+            onSuccess:
+              - send_notification notifySMTP --body "build successfull:$PIPELINE_NAME.$RUN_NUMBER"
             
       - name: xrayScanStep
         type: XrayScan
