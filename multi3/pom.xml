@@ -20,56 +20,9 @@
        
 
         <!-- runtime dependency -->
-        <dependency>
-            <groupId>hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <version>1.8.0.10</version>
-            <scope>runtime</scope>
-        </dependency>
 
-        <!-- provided dependency -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
 
-    <profiles>
-        <profile>
-            <id>assembly</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-assembly-plugin</artifactId>
-                        <version>2.2-beta-5</version>
-                        <configuration>
-                            <descriptorRefs>
-                                <descriptorRef>jar-with-dependencies</descriptorRef>
-                            </descriptorRefs>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>make-assembly</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>single</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-   <plugin>
-   <groupId>org.apache.maven.plugins</groupId>
-   <artifactId>maven-war-plugin</artifactId>
-   <version>3.3.1</version>
-   <configuration>
-      <failOnMissingWebXml>false</failOnMissingWebXml>
-   </configuration>
-</plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
+ 
 
 </project>
