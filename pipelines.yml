@@ -2,13 +2,13 @@ template: true   # required for local templates
 valuesFilePath: ./values.yml
 
 resources:
-  - name: mvn_repo
+  - name: mvn_repo1
     type: GitRepo
     configuration:
       path: {{ .Values.repoPath }}
       gitProvider: {{ .Values.gitProvider }}
 
-  - name: mvn_build_info
+  - name: mvn_build_info1
     type: BuildInfo
     configuration:
       sourceArtifactory: {{ .Values.artifactory }}
@@ -22,7 +22,7 @@ pipelines:
           deployerSnapshotRepo: {{ .Values.deployerRepo }}
           deployerReleaseRepo: {{ .Values.deployerRepo }}
           inputResources:
-            - name: mvn_repo
+            - name: mvn_repo1
           integrations:
             - name: {{ .Values.artifactory }}
 
@@ -33,10 +33,10 @@ pipelines:
           inputSteps:
             - name: mvn_build_step
           outputResources:
-            - name: mvn_build_info
+            - name: mvn_build_info1
             
       - name: xrayScanStep
         type: XrayScan
         configuration:
           inputResources:
-            - name: mvn_build_info 
+            - name: mvn_build_info1 
