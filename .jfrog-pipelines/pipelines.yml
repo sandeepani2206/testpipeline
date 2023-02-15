@@ -1,2 +1,42 @@
-iyes
+template: true   # required for local templates
+valuesFilePath: ./values.yml
 
+resources:
+  - name: mvn_repo1
+    type: GitRepo
+    configuration:
+      path: {{ .Values.repoPath }}
+      gitProvider: {{ .Values.gitProvider }}
+
+  - name: mvn_build_info1
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: {{ .Values.artifactory }}
+
+pipelines:
+  - name: maven_pipeline1
+    steps:
+      - name: mvn_build_step
+        type: MvnBuild
+        configuration:
+          deployerSnapshotRepo: {{ .Values.deployerRepo }}
+          deployerReleaseRepo: {{ .Values.deployerRepo }}
+          inputResources:
+            - name: mvn_repo1
+          integrations:
+            - name: {{ .Values.artifactory }}
+
+      - name: publish_build  
+        type: PublishBuildInfo
+        configuration:
+          forceXrayScan: false
+          inputSteps:
+            - name: mvn_build_step
+          outputResources:
+            - name: mvn_build_info1
+            
+      - name: xrayScanStep
+        type: XrayScan
+        configuration:
+          inputResources:
+            - name: mvn_build_info1 
