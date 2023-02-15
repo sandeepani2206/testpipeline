@@ -1,0 +1,6 @@
+gitProvider: sand_int
+artifactory: artifactory_int
+artifactoryUrl: hts1.jfrog.io   # replace with your server name
+repoPath: sandeepanikapati/testpipeline     # replace jfrog with your username or org name
+deployerRepo: maven-local
+smtpIntegration: mail
